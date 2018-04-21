@@ -77,8 +77,8 @@ internal extension SwiftLint {
             do {
                 try Folder(path: directory).makeSubfolderSequence(recursive: true).forEach { folder in
                     files: for file in folder.files {
-                        changedFiles.forEach {
-                            if file.path.hasSuffix($0) { continue files }
+                        for changedFile in changedFiles {
+                            if file.path.hasSuffix(changedFile) { continue files }
                         }
 
                         allFiles.append(file.path)
