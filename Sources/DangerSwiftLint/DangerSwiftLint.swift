@@ -35,7 +35,7 @@ internal extension SwiftLint {
         func violationsFromFiles(files: [String], shouldBeInline: Bool) -> [Violation] {
             let decoder = JSONDecoder()
             let violations = files.filter { $0.hasSuffix(".swift") }.flatMap { file -> [Violation] in
-                var arguments = ["lint", "--quiet", "--path \"\(file)\"", "--reporter json"]
+                var arguments = ["lint", "--quiet", "--benchmark", "--path \"\(file)\"", "--reporter json"]
                 if let configFile = configFile {
                     arguments.append("--config \"\(configFile)\"")
                 }
